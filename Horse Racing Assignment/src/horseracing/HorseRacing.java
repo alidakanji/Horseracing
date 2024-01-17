@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class HorseRacing {
 // test12345
 // awesomesauce
+//hi
      public static void main(String[] args) {
         Scanner in = new Scanner(System.in);    
         HorseRacingHelper.prepareHorseRacingSimulation();
