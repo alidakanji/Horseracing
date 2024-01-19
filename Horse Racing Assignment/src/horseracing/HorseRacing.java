@@ -7,6 +7,8 @@ public class HorseRacing {
 // awesomesauce
 //hi
      public static void main(String[] args) {
+        System.out.print("\u001B[?25l");  // Hide the cursor
+
         Scanner in = new Scanner(System.in);    
         HorseRacingHelper.prepareHorseRacingSimulation();
         boolean gameOver = false;
