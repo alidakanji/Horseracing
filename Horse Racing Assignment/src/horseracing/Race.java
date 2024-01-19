@@ -2,7 +2,7 @@ package horseracing;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// test
 public class Race {
     private List<Horse> horses;
     private double raceLength; // in furlongs
