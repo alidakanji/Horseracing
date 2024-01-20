@@ -20,6 +20,9 @@ public class HorseRacing {
             Race race = HorseRacingHelper.createRace(numHorsesInRace, HorseRacingHelper.SHORT, HorseRacingHelper.DIRT);
             race.displayRaceInfo();
 
+            race.startBetting();
+            // I called my function called startBetting because Horseracing is the main where everything is ran
+
             race.startRace();
 
             System.out.println("Race is Over");

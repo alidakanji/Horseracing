@@ -2,6 +2,8 @@ package horseracing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 // test
 public class Race {
     private List<Horse> horses;
@@ -77,6 +79,30 @@ public class Race {
         }
     }
 
+   
+    
+    public void startBetting(){
+        System.out.println("Do you want to bet on a horse? 0 for Yes, 1 for no"); 
+        Scanner input = new Scanner(System.in);
+        int x = input.nextInt(); 
+
+        if(x==0){
+            System.out.println("Which horse do you want to bet on?");
+            int horseBet = input.nextInt();
+
+            System.out.println("Are you betting to win(1), place(2), or show(3)?");
+            int betType = input.nextInt();     
+
+        }
+        else{
+            System.out.println("That's okay, let us know when you are!");
+        }
+
+
+    }
+
+
+
 
     public void startRace(){
         resetHorses();
@@ -105,7 +131,10 @@ public class Race {
 
             if (results.size() == horses.size())
                 done = true;
+
         }
+
+
 
         HorseRacingHelper.stopMusic();
     }
@@ -126,6 +155,8 @@ public class Race {
        return d;
     }
 
+    
+
 
     private void resetHorses() {
         for (Horse horse : horses) {
@@ -133,3 +164,4 @@ public class Race {
         }
     }
 }
+
