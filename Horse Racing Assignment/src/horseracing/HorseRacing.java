@@ -20,13 +20,24 @@ public class HorseRacing {
             Race race = HorseRacingHelper.createRace(numHorsesInRace, HorseRacingHelper.SHORT, HorseRacingHelper.DIRT);
             race.displayRaceInfo();
 
+
             race.startBetting();
-            // I called my function called startBetting because Horseracing is the main where everything is ran
+            // I called my function called startBetting because Horseracing is the main where everything is ran - CG
+            // i called this after the display race info so the user can know the different odds- CG
+            //I called this before the race because users have to bet before the race starts- CG
 
             race.startRace();
 
+            race.bettingResults(); 
+            // I called my betting Results function - CG
+            // I called this after the race so we can know the results and compare - CG
+
+            // i called the betting
             System.out.println("Race is Over");
+            
+            //after the race is finished, I called my bettingResult to show if the person won any money -CG
             gameOver = playAgain(in);
+
         }
 
         

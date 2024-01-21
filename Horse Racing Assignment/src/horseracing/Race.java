@@ -10,6 +10,8 @@ public class Race {
     private double raceLength; // in furlongs
     private String raceSurface; // "grass", "dirt", or "mud" (Uses HorseRacingHelper constants)
     private int currentHorse;
+    private int betType; //i created an instance for the betting type (to win, place or show) - CG
+    private int horseBet;//then I created a instance called horseBet to represent which horse the user is betting on - CG
 
     private List<Horse> results;
 
@@ -77,21 +79,36 @@ public class Race {
         for(int i=0; i<results.size(); i++){
             System.out.println((i+1) + ": " + results.get(i).getName() + "("+results.get(i).getNumber()+")");
         }
+     
+
+
+    
     }
 
    
     
     public void startBetting(){
-        System.out.println("Do you want to bet on a horse? 0 for Yes, 1 for no"); 
+        System.out.println("Do you want to bet on a horse? 0 for Yes, 1 for no"); //this limits the answers only in numerical form - CG
         Scanner input = new Scanner(System.in);
         int x = input.nextInt(); 
 
         if(x==0){
-            System.out.println("Which horse do you want to bet on?");
-            int horseBet = input.nextInt();
+            System.out.println("How much money do you have?");//if the user doesn't have any money, they cant bet - CG
+            int moneyamt = input.nextInt();
+            
+            if(moneyamt>0){
 
-            System.out.println("Are you betting to win(1), place(2), or show(3)?");
-            int betType = input.nextInt();     
+            System.out.println("Which horse do you want to bet on?"); // this would refer to my instance horseBet - CG
+            horseBet = input.nextInt();
+
+            System.out.println("Are you betting to win(1), place(2), or show(3)?"); // this would refer to my instance betType -CG
+            betType = input.nextInt(); 
+
+            }
+
+            else{
+                System.out.println ("Sorry, you dont have enough money!");
+                }
 
         }
         else{
@@ -100,6 +117,43 @@ public class Race {
 
 
     }
+         public void bettingResults(){
+
+        if(betType ==1){ // if the user is betting to win
+            if(horseBet== results.get(1).getNumber()){ // results.get(i).getNumber basically gets the number of the horse at i index- CG
+            System.out.println("Yay, you won 30 dollars!"); //this one basically gets the number of the horse that came first and if the horse the user bets on wins then they made money!- CG
+        }
+    
+        else{
+            System.out.println("sorry, you didn't win..."); // if they bet to win, but their horse didn't place, they dont make money- CG
+        }
+    }
+          else if( betType==2){
+            if (horseBet== results.get(1).getNumber()|| horseBet== results.get(2).getNumber()){ // if the horseBet is the horse that came first OR second - CG
+                System.out.println("Yay, you won 20 dollars!");// then they make money - CG
+            }
+        
+            else{
+                System.out.println("sorry, you didn't win..."); // if their horse didn't win first or second, then they dont make money- CG
+            }
+        }
+
+            else{
+                if( horseBet== results.get(3).getNumber() ||  horseBet== results.get(2).getNumber() || horseBet == results.get(3).getNumber()){ // if the horse came first, second of third - CG
+                System.out.println("Yay, you won 10 dollars!"); //then they make money- CG
+                }
+        
+            else{
+                System.out.println("sorry, you didn't win...");//if their horse didn't win first OR second OR third, they dont make money - CG
+            }
+            }
+        }
+
+
+    
+
+        
+    
 
 
 
