@@ -69,5 +69,40 @@ public class Horse{
             currentPosition = 2;
             finishedRace = false;
         }
-       
+
+        public String getOddsWin(double raceLength, String raceSurface) {
+            double winOdd = 2 + Math.abs(preferredLength-raceLength);
+            //2 is the base min amount return and you can find the difference between the two lengths
+            // the smaller the difference is, the larger possibility 
+            // the larger the difference is, the smaller possibility 
+            double winBet = 1;
+            //refers to how much money you're putting in
+
+            if (raceSurface == "dirt"){
+                if(getDirtRating()>5){ // the ratings range from 1 to 10 and 5 is the middle.
+                    // if the rating is higher than 5, they get a higher possibility
+                    winBet++; 
+                    
+                }
+    
+            }
+            else if(raceSurface =="grass"){
+                if(getGrassRating()>5){
+                    winBet++; 
+                }
+            }
+            else{
+                if(getMudRating()>5){
+                    winBet++;
+                }
+            }
+            
+            return "" + winOdd + "-" + winBet;
+        } 
     }
+
+        
+
+
+
+    

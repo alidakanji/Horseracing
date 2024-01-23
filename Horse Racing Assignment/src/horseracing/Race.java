@@ -12,6 +12,8 @@ public class Race {
     private int currentHorse;
     private int betType; //i created an instance for the betting type (to win, place or show) - CG
     private int horseBet;//then I created a instance called horseBet to represent which horse the user is betting on - CG
+    private int winOdd; // i created an instance for odds on winning in horse class
+    private int winBet;// i created an object for the money od money you're betting in 
 
     private List<Horse> results;
 
@@ -46,6 +48,13 @@ public class Race {
     public String getRaceSurface() {
         return raceSurface;
     }
+    
+    public int getOddsWin(double raceLength, String raceSurface) {
+        return winOdd;
+
+    }
+   
+
 
     public void displayHorseTable(){
         for (int i = 0; i < horses.size(); i++) {   // iterates through the horses list
@@ -55,11 +64,13 @@ public class Race {
             String s3 = "" + horse.getGrassRating();
             String s4 = "" + horse.getMudRating();
             String s5 = "" + horse.getPreferredLength();
+            String s6 = "" + horse.getOddsWin(raceLength,raceSurface) + "-" + winBet;
+            
 
-            System.out.println("+--------------------+-----+-----+-----+-----+");
-            System.out.printf("|%-20s|%5s|%5s|%5s|%5s|\n", s1, s2, s3, s4, s5);
+            System.out.println("+--------------------+-----+-----+-----+-----+---------+--------+----------+");
+            System.out.printf("|%-20s|%5s|%5s|%5s|%5s|%5s|\n", s1, s2, s3, s4, s5, s6);
         }
-        System.out.println("+--------------------+-----+-----+-----+-----+");
+        System.out.println("+--------------------+-----+-----+-----+-----+---------+--------+----------+");
     }
 
     public void displayRaceInfo() {
@@ -72,6 +83,8 @@ public class Race {
         // }
         displayHorseTable();
     }
+
+    
 
     public void displayResults(){
         System.out.println("\n\nRace Results");
@@ -122,6 +135,7 @@ public class Race {
         if(betType ==1){ // if the user is betting to win
             if(horseBet== results.get(1).getNumber()){ // results.get(i).getNumber basically gets the number of the horse at i index- CG
             System.out.println("Yay, you won 30 dollars!"); //this one basically gets the number of the horse that came first and if the horse the user bets on wins then they made money!- CG
+            
         }
     
         else{
