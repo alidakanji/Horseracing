@@ -60,9 +60,9 @@ public class Race {
 
     public void displayHorseTable(){
         String s9 = "Horse Name";
-        System.out.println("+--------------------+-----------+------------+----------+----------------+");
-        System.out.printf("|%-20s|Dirt Rating|Grass Rating|Mud Rating|Preferred Length|\n", s9);
-        System.out.println("+--------------------+-----------+------------+----------+----------------+");
+        System.out.println("+--------------------+-----------+------------+----------+----------------+--------+----------+--------+");
+        System.out.printf("|%-20s|Dirt Rating|Grass Rating|Mud Rating|Preferred Length|OddsWin |OddsPlace |OddsShow|\n", s9);
+        System.out.println("+--------------------+-----------+------------+----------+----------------+--------+----------+--------+");
         for (int i = 0; i < horses.size(); i++) {   // iterates through the horses list
             Horse horse = horses.get(i);
             String s1 = "" + horse.getName();
@@ -71,13 +71,12 @@ public class Race {
             String s4 = "" + horse.getMudRating();
             String s5 = "" + horse.getPreferredLength();
             String s6 = "" + horse.getOddsWin(raceLength,raceSurface);
-            String s7 = "" + horse.getOddsPlace(winOdd);
-            String s8 = "" + horse.getOddShow(winOdd,placeOdd);
-
+            String s7 = "" + horse.getOddsPlace(Double.parseDouble(s6.substring(0,s6.indexOf("-"))));
+            String s8 = "" + horse.getOddShow(Double.parseDouble(s7.substring(0,s7.indexOf("-"))));
             
 
-            System.out.println("+--------------------+-----+-----+-----+-----+---------+--------+----------+");
-            System.out.printf("|%-20s|%5s|%5s|%5s|%5s|%7s|%7s|%7s|\n", s1, s2, s3, s4, s5, s6, s7,s8);
+            System.out.println("\"+-------------------+-----------+------------+----------+----------------+--------+----------+--------+\"");
+            System.out.printf("|%-20s|%11s|%12s|%10s|%17s|%7s|%7s|%7s|\n", s1, s2, s3, s4, s5, s6, s7,s8);
         }
         //System.out.println("+--------------------+-----------+------------+----------+----------------+");
            // String s6 = "" + horse.getOddsWin(raceLength,raceSurface) + "-" + winBet;

@@ -78,7 +78,7 @@ public class Horse{
             // the larger the difference is, the smaller possibility 
 
 
-            if (raceSurface == "dirt"){
+            if (raceSurface == "Dirt"){
                 if(getDirtRating()>=9){ //the higher the ratings, the higher possibility winning
                     winOdd+=0; // and low odds= high probability
                 }
@@ -139,59 +139,82 @@ public class Horse{
                     winOdd+=5;
                 }
             }
-           if(winOdd%1==0.5)
-            return "" + winOdd*2 + "-2";
-            else 
-            return "" + winOdd + "-1";
+           /*if(winOdd%1==0.5)
+            return ("" + (int)(winOdd*2) + "-2");
+            else */
+            return ("" + (int)winOdd + "-1");
 
         }  
 
-        public String getOddsPlace(int winOdd){
+        public String getOddsPlace(double winOdd){
              //the probability for placing is higher than the probability of winning
              //so, if the winning odds is already low, then we want to make the placing odds even lower 
              //if the winning odd is high, the placing odd would be lower but would still be high
+             
 
             double placeOdd = 0;
-            if(winOdd>=4 && winOdd<=5){ //"">=4" ensures that after -2 the minimum result is 2
+            if(winOdd==2){
+                placeOdd=4;
+            }
+            if(winOdd==2.5){
+                placeOdd=2;
+            }
+            if (winOdd==3){
+                placeOdd=1.5;
+            }
+            if (winOdd>=4 && winOdd<6){ //"">=4" ensures that after -2 the minimum result is 2
                 placeOdd = winOdd - 2;
 
             }     
-            else if(winOdd>=6 &&winOdd<=8){
+             if(winOdd>=6 &&winOdd<8){
                 placeOdd = winOdd - 1.5;
 
             }    
-            else if(winOdd>=8 && winOdd<=10){
+             if(winOdd>=8 && winOdd<10){
                 placeOdd = winOdd - 1;
             }
-            else if(winOdd>10){
+             if(winOdd>=10){
                 placeOdd = winOdd - 0.5;
 
             }
-            if(placeOdd%1==0.5)
-                return "" + placeOdd*2 + "-2";
-            else 
+            if(placeOdd==4)
+                return "" + placeOdd + "-3";
+            
+           /* if(placeOdd%1==0.5)
+                return "" + (int)(placeOdd*2) + "-2";
+            else */
                 return "" + placeOdd + "-1";
         }
         
-        public String getOddShow(int winOdd, int placeOdd){
-            int showOdd = 0; 
-            if(placeOdd>=3 && placeOdd<=5){
-                showOdd = placeOdd +1; //because winning and 
-            }
-            else if(placeOdd>=4 && placeOdd<=8){
-                showOdd = placeOdd +2;
-            }
-            else if(placeOdd>=7 && placeOdd<=10){
-                    showOdd = placeOdd +3;
-            }
-            else if(winOdd>11){
-                showOdd = winOdd + 4;
+        public String getOddShow(double placeOdd){
+            double showOdd = 0; 
+            
+
+            if (placeOdd==3){
+                showOdd=1.5;
             }
 
-            if(showOdd%1==0.5)
-                return "" + showOdd*2 + "-2";
-            else 
-                return "" + showOdd + "-1";
+            if(placeOdd==2.5){
+                showOdd=2;
+            }
+            
+            if(placeOdd>=4 && placeOdd<6){
+                showOdd = placeOdd -2; //because winning and 
+            }
+            else if(placeOdd>=6 && placeOdd<8){
+                showOdd = placeOdd -1.5;
+            }
+            else if(placeOdd>=8 && placeOdd<10){
+                    showOdd = placeOdd -1;
+            }
+            else if(placeOdd>=10){
+                showOdd = placeOdd -0.5;
+            }
+                     
+          /* if(showOdd%1==0.5)
+                return ("" + (int)(showOdd*2) + "-2");
+            else */
+                return ("" + showOdd + "-1");
 
         }
     }
