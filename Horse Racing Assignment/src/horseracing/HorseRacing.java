@@ -26,6 +26,8 @@ public class HorseRacing {
             // i called this after the display race info so the user can know the different odds- CG
             //I called this before the race because users have to bet before the race starts- CG
 
+            
+
             race.startRace();
 
             race.bettingResults(); 
