@@ -72,8 +72,12 @@ public class Race {
             String s5 = "" + horse.getPreferredLength();
             String s6 = "" + horse.getOddsWin(raceLength,raceSurface);
             String s7 = "" + horse.getOddsPlace(Double.parseDouble(s6.substring(0,s6.indexOf("-"))));
+            //basically gets the input from s6 
+            //but s6 is a string with a number in it, and we only want the number
+            //so we're taking the substring of s6 till the index where the dash is(which is the next index after the number)
+            //then we're turning this into a double 
             String s8 = "" + horse.getOddShow(Double.parseDouble(s7.substring(0,s7.indexOf("-"))));
-            
+            //the same logic for getting a double version of the input from s7 
 
             System.out.println("\"+-------------------+-----------+------------+----------+----------------+--------+----------+--------+\"");
             System.out.printf("|%-20s|%11s|%12s|%10s|%17s|%7s|%7s|%7s|\n", s1, s2, s3, s4, s5, s6, s7,s8);
@@ -141,18 +145,16 @@ public class Race {
                  System.out.println("please enter an amount inside your budget"); 
         }
 
-
             else{
                 System.out.println ("Sorry, you dont have enough money!");
                 }
-
         }
         else{
             System.out.println("That's okay, let us know when you are!");
         }
 
-
     }
+
          public void bettingResults(){
 
         if(betType ==1){ // if the user is betting to win
