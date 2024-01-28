@@ -11,6 +11,9 @@ public double moneyamt;
 public double bettingamt;
 public int x;
 public boolean gameOver;
+public double winOdd; 
+     public double placeOdd; 
+     public double showOdd;
      public static void main(String[] args) {
         System.out.print("\u001B[?25l");  // Hide the cursor
         
@@ -36,7 +39,7 @@ public boolean gameOver;
 
             race.startRace();
 
-            race.bettingResults(); 
+            race.bettingResults(winOdd, showOdd, placeOdd); 
             // I called my betting Results function - CG
             // I called this after the race so we can know the results and compare - CG
 

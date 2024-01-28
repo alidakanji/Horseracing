@@ -57,7 +57,8 @@ public class Race {
         return winOdd;
 
     }
-   
+    
+
 
 
     public void displayHorseTable(){
@@ -131,8 +132,7 @@ public class Race {
 
             if(moneyamt>0){
             System.out.println("How much money do you want to bet?");
-            double bettingamt = input.nextDouble();
-            System.out.println(bettingamt);
+             bettingamt = input.nextDouble();
             if(bettingamt<=moneyamt){
         
             System.out.println("Which horse do you want to bet on?"); // this would refer to my instance horseBet - CG
@@ -158,7 +158,7 @@ public class Race {
 
     }
 
-         public void bettingResults(){
+        public void bettingResults( double winOdd, double placeOdd, double showOdd){
 
         if(betType ==1){ // if the user is betting to win
             double earnedDollars = winOdd*bettingamt;
@@ -189,26 +189,28 @@ public class Race {
 
         else if( betType==3){
 
-            if (placeOdd==2){
+            if (showOdd==4){
                 showOdd=showOdd/3; //refers to how the odd is 4-3, but the actual value is 4/3
                 System.out.println(showOdd);
             }
-            if (placeOdd==4){
+            if (showOdd==5){
                 showOdd=showOdd/4; // refers to  the odd is 5-4, but the acutal value is 5/4
                 System.out.println(showOdd);
 
             }
-            if (placeOdd==1.5){
+            if (showOdd==3.5){
                  showOdd= showOdd/3; // refers to the how the odd is 3.5-3, but the actual value is 3.5/3;
                  System.out.println(showOdd);
 
             }
+            else 
+            showOdd=showOdd/1;
 
 
-            double earnedDollars = placeOdd*bettingamt;
+            double earnedDollars = showOdd*bettingamt;
 
             if( horseBet== results.get(0).getNumber() ||  horseBet== results.get(1).getNumber() || horseBet == results.get(2).getNumber()){ // if the horse came first, second of third - CG
-            System.out.println(placeOdd);
+            System.out.println(showOdd);
             System.out.println(bettingamt);  //then they make money- CG
         }
             else
