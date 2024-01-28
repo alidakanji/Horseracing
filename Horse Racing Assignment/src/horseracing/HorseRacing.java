@@ -6,13 +6,19 @@ public class HorseRacing {
 // test1234
 // awesomesauce
 //hi
+
+public double moneyamt; 
+public double bettingamt;
+public int x;
+public boolean gameOver;
      public static void main(String[] args) {
         System.out.print("\u001B[?25l");  // Hide the cursor
-
+        
         Scanner in = new Scanner(System.in);    
         HorseRacingHelper.prepareHorseRacingSimulation();
         boolean gameOver = false;
-        while(!gameOver){
+
+           while(!gameOver){
             HorseRacingHelper.clearConsole();
 
             int numHorsesInRace = (int)(Math.random()*7)+5;

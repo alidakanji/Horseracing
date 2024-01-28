@@ -223,7 +223,7 @@ public class Horse{
                 showOdd=5;
             }
             
-            if(placeOdd>=4 && placeOdd<6){
+            if(placeOdd>4 && placeOdd<6){
                 showOdd = placeOdd -2; //this is very similar for the odds to place 
             }
             else if(placeOdd>=6 && placeOdd<8){
@@ -236,13 +236,13 @@ public class Horse{
                 showOdd = placeOdd -0.5;
             }
                      
-                if (placeOdd==2){
+                if (showOdd==4){
                     return ("" + showOdd + "-3"); //this refers to the code above about how 2-1 turns into 4-3
                 }
-                if (placeOdd==4){
+                if (showOdd==5){
                     return ("" + showOdd + "-4"); //this refers to the code above about how 4-3 placeOdd turns into 5-4 showOdd
                 }
-                if (placeOdd==1.5){
+                if (showOdd==3.5){
                     return ("" + showOdd + "-3");  //this refers to the code above about how 1.5-1 placeOdd turns into 3.5-3 showOdd
                 }
 

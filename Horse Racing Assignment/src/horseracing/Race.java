@@ -12,10 +12,12 @@ public class Race {
     private int currentHorse;
     private int betType; //i created an instance for the betting type (to win, place or show) - CG
     private int horseBet;//then I created a instance called horseBet to represent which horse the user is betting on - CG
-    private int winOdd; // i created an instance for odds on winning in horse classn 
-    private int placeOdd; 
-    private int ShowOdd; 
-    private int bettingamt;
+    public double winOdd; // i created an instance for odds on winning in horse classn 
+     public double placeOdd; 
+     public double showOdd; 
+
+    public double moneyamt; 
+    public double bettingamt;
 
     private List<Horse> results;
 
@@ -51,7 +53,7 @@ public class Race {
         return raceSurface;
     }
     
-    public int getOddsWin(double raceLength, String raceSurface) {
+    public double getOddsWin(double raceLength, String raceSurface) {
         return winOdd;
 
     }
@@ -118,19 +120,19 @@ public class Race {
    
     
     public void startBetting(){
-        System.out.println("Do you want to bet on a horse? 0 for Yes, 1 for no"); //this limits the answers only in numerical form - CG
         Scanner input = new Scanner(System.in);
+
+        System.out.println("Do you want to bet on a horse? 0 for Yes, 1 for no"); //this limits the answers only in numerical form - CG
         int x = input.nextInt(); 
-        input.close();
         if(x==0){
             System.out.println("How much money do you have?");//if the user doesn't have any money, they cant bet - CG
             int moneyamt = input.nextInt();
-            
+
+
             if(moneyamt>0){
-
             System.out.println("How much money do you want to bet?");
-            double bettingamt = input.nextInt();
-
+            double bettingamt = input.nextDouble();
+            System.out.println(bettingamt);
             if(bettingamt<=moneyamt){
         
             System.out.println("Which horse do you want to bet on?"); // this would refer to my instance horseBet - CG
@@ -153,34 +155,66 @@ public class Race {
             System.out.println("That's okay, let us know when you are!");
         }
 
+
     }
 
          public void bettingResults(){
 
         if(betType ==1){ // if the user is betting to win
+            double earnedDollars = winOdd*bettingamt;
             if(horseBet== results.get(0).getNumber()) // results.get(i).getNumber basically gets the number of the horse at i index- CG
-            System.out.println("Yay, you earned" + bettingamt+ "dollars!"); //this one basically gets the number of the horse that came first and if the horse the user bets on wins then they made money!- CG
+
+            System.out.println(earnedDollars); //this one basically gets the number of the horse that came first and if the horse the user bets on wins then they made money!- CG
             else
             System.out.println("sorry, you didn't win..."); // if they bet to win, but their horse didn't place, they dont make money- CG
         }
     
     
         else if( betType==2){
+
+            if(placeOdd==4){ //odd is 4-3, but the actual ratio value is 4/3
+                placeOdd=4/3;
+                System.out.println(placeOdd);
+            }
+
+            double earnedDollars = placeOdd*bettingamt;
+
+
             if (horseBet== results.get(0).getNumber()|| horseBet== results.get(1).getNumber()) // if the horseBet is the horse that came first OR second - CG
-                System.out.println("Yay, you earned" + bettingamt+ "dollars");// then they make money - CG        
+                System.out.println(earnedDollars);// then they make money - CG        
             else
                 System.out.println("sorry, you didn't win..."); // if their horse didn't win first or second, then they dont make money- CG
         }
 
 
         else if( betType==3){
-            
-            if( horseBet== results.get(0).getNumber() ||  horseBet== results.get(1).getNumber() || horseBet == results.get(2).getNumber()) // if the horse came first, second of third - CG
-            System.out.println("Yay, you earned " + bettingamt + " dollars");  //then they make money- CG
-                
+
+            if (placeOdd==2){
+                showOdd=showOdd/3; //refers to how the odd is 4-3, but the actual value is 4/3
+                System.out.println(showOdd);
+            }
+            if (placeOdd==4){
+                showOdd=showOdd/4; // refers to  the odd is 5-4, but the acutal value is 5/4
+                System.out.println(showOdd);
+
+            }
+            if (placeOdd==1.5){
+                 showOdd= showOdd/3; // refers to the how the odd is 3.5-3, but the actual value is 3.5/3;
+                 System.out.println(showOdd);
+
+            }
+
+
+            double earnedDollars = placeOdd*bettingamt;
+
+            if( horseBet== results.get(0).getNumber() ||  horseBet== results.get(1).getNumber() || horseBet == results.get(2).getNumber()){ // if the horse came first, second of third - CG
+            System.out.println(placeOdd);
+            System.out.println(bettingamt);  //then they make money- CG
+        }
             else
                 System.out.println("sorry, you didn't win...");//if their horse didn't win first OR second OR third, they dont make money - CG
         } 
+
 
          }
 
@@ -252,5 +286,8 @@ public class Race {
             horse.resetCurrenPosition();
         }
     }
-}
+
+
+}        
+
 
