@@ -160,7 +160,7 @@ public class Race {
             double earnedDollars = win*bettingamt;
             if(horseBet== results.get(0).getNumber()) // results.get(i).getNumber basically gets the number of the horse at i index- CG
 
-            System.out.println("yay, you won!" + earnedDollars); //this one basically gets the number of the horse that came first and if the horse the user bets on wins then they made money!- CG
+            System.out.println("yay, you won!"); //this one basically gets the number of the horse that came first and if the horse the user bets on wins then they made money!- CG
             else
             System.out.println("sorry, you didn't win..."); // if they bet to win, but their horse didn't place, they dont make money- CG
         }
@@ -181,7 +181,7 @@ public class Race {
 
 
             if (horseBet== results.get(0).getNumber()|| horseBet== results.get(1).getNumber()) // if the horseBet is the horse that came first OR second - CG
-                System.out.println("yay, you won!" + earnedDollars);// then they make money - CG        
+                System.out.println("yay, you won!");// then they make money - CG        
             else
                 System.out.println("sorry, you didn't win..."); // if their horse didn't win first or second, then they dont make money- CG
         }
@@ -211,7 +211,7 @@ public class Race {
             double earnedDollars = showOdd*bettingamt;
 
             if( horseBet== results.get(0).getNumber() ||  horseBet== results.get(1).getNumber() || horseBet == results.get(2).getNumber()){ // if the horse came first, second of third - CG
-            System.out.println("yay, you won!" + earnedDollars);  //then they make money- CG
+            System.out.println("yay, you won!");  //then they make money- CG
         }
             else
                 System.out.println("sorry, you didn't win...");//if their horse didn't win first OR second OR third, they dont make money - CG
