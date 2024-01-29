@@ -39,7 +39,7 @@ public double winOdd;
 
             race.startRace();
 
-            race.bettingResults(winOdd, showOdd, placeOdd); 
+            race.bettingResults(); 
             // I called my betting Results function - CG
             // I called this after the race so we can know the results and compare - CG
 

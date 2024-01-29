@@ -15,6 +15,9 @@ public class Race {
     public double winOdd; // i created an instance for odds on winning in horse classn 
      public double placeOdd; 
      public double showOdd; 
+    
+
+
 
     public double moneyamt; 
     public double bettingamt;
@@ -80,6 +83,8 @@ public class Race {
             //so we're taking the substring of s6 till the index where the dash is(which is the next index after the number)
             //then we're turning this into a double 
             String s8 = "" + horse.getOddShow(Double.parseDouble(s7.substring(0,s7.indexOf("-"))));
+            double show = Double.parseDoubles8.substring(1);
+
             //the same logic for getting a double version of the input from s7 
 
             System.out.println("\"+-------------------+-----------+------------+----------+----------------+--------+----------+--------+\"");
@@ -90,6 +95,7 @@ public class Race {
             //System.out.println("+--------------------+-----+-----+-----+-----+---------+--------+----------+");
             //System.out.printf("|%-20s|%5s|%5s|%5s|%5s|%5s|\n", s1, s2, s3, s4, s5);
             //System.out.println("+--------------------+-----------+------------+----------+----------------+");
+
         }
        
 
@@ -158,9 +164,14 @@ public class Race {
 
     }
 
-        public void bettingResults( double winOdd, double placeOdd, double showOdd){
+        public void bettingResults(){
+            System.out.println(showOdd);
 
         if(betType ==1){ // if the user is betting to win
+
+            if( horseBet== results.get(0).getNumber())
+            winOdd=results.get(0).getOddsWin(raceLength, raceSurface);
+          
             double earnedDollars = winOdd*bettingamt;
             if(horseBet== results.get(0).getNumber()) // results.get(i).getNumber basically gets the number of the horse at i index- CG
 
@@ -171,6 +182,12 @@ public class Race {
     
     
         else if( betType==2){
+
+            if( horseBet== results.get(0).getNumber())
+            placeOdd=results.get(0).getOddsPlace(winOdd);
+            if (horseBet== results.get(1).getNumber())
+            placeOdd=results.get(1).getOddsPlace(winOdd);
+            
 
             if(placeOdd==4){ //odd is 4-3, but the actual ratio value is 4/3
                 placeOdd=4/3;
@@ -188,6 +205,15 @@ public class Race {
 
 
         else if( betType==3){
+
+            if( horseBet== results.get(0).getNumber())
+            showOdd=results.get(0).getOddShow(Double.parseDouble(placeOdd.substring(0,placeOdd.indexOf("-"));
+            if (horseBet== results.get(1).getNumber())
+            showOdd=results.get(1).getOddShow(Double.parseDouble(placeOdd.substring(0,placeOdd.indexOf("-"));
+            if ( horseBet == results.get(2).getNumber())
+            showOdd=results.get(2).getOddShow(Double.parseDouble(placeOdd.substring(0,placeOdd.indexOf("-"));
+
+    
 
             if (showOdd==4){
                 showOdd=showOdd/3; //refers to how the odd is 4-3, but the actual value is 4/3
@@ -210,7 +236,7 @@ public class Race {
             double earnedDollars = showOdd*bettingamt;
 
             if( horseBet== results.get(0).getNumber() ||  horseBet== results.get(1).getNumber() || horseBet == results.get(2).getNumber()){ // if the horse came first, second of third - CG
-            System.out.println(showOdd);
+            System.out.println(show);
             System.out.println(bettingamt);  //then they make money- CG
         }
             else
